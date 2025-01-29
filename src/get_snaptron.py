@@ -1,7 +1,7 @@
 import urllib.request
 
 if __name__ == '__main__':
-    link = "https://snaptron.cs.jhu.edu/gtex/snaptron?regions=CD99&sfilter=SMTS:Brain"
+    link = "https://snaptron.cs.jhu.edu/srav2/snaptron?regions=chr6:1-514015&rfilter=samples_count:100"
 
     # Open the URL and iterate over the lines
     with urllib.request.urlopen(link) as response:
@@ -24,6 +24,6 @@ if __name__ == '__main__':
                 samples.update(x.split(":")[0] for x in current_data[12].split(","))
                 data.append(current_data)
         print(f"{len(header)}x{i}x{len(samples)}")
-        for index,row in enumerate(zip(header, data[5])):
+        for index,row in enumerate(zip(header, data[0])):
             attribute, value =row
             print(f"{index}:{attribute}->{value}")
